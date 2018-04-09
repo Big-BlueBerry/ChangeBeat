@@ -9,7 +9,7 @@ using Newtonsoft.Json.Converters;
 using System.IO;
 using System.Net;
 
-namespace ChangeBpm
+namespace ChangeBeat
 {
     class jsonpasing
     {
@@ -28,7 +28,7 @@ namespace ChangeBpm
             //    cry();
         }
 
-        public static qwer[][] parseNotes(Asdf asdf)
+        public static qwer[][] parseNotes(PropertyJson asdf)
             => (from note in asdf.Notes
                 select (from c in note.Replace(" ", "")
                         select (qwer)"0123<>".IndexOf(c)).ToArray()).ToArray();
@@ -37,20 +37,20 @@ namespace ChangeBpm
         //     .Select(s => s.Replace(" ", ""))
         //     .Select(s => s.Select(c => (qwer)"0123<>".IndexOf(c)).ToArray()).ToArray();
 
-        public static Asdf LoadJson(string file)
+        public static PropertyJson LoadJson(string file)
         {
             using (StreamReader j = new StreamReader(file, Encoding.UTF8))
             {
                 using (var jr = new JsonTextReader(j))
                 {
                     var serializer = new JsonSerializer();
-                    return serializer.Deserialize<Asdf>(jr);
+                    return serializer.Deserialize<PropertyJson>(jr);
                 }
             }
         }
     }
 
-    public readonly struct Asdf //이름 나중에 바꿔야 되는 데 결정하면 바꾸는 걸로 ^!^
+    public readonly struct PropertyJson //이름 나중에 바꿔야 되는 데 결정하면 바꾸는 걸로 ^!^
     {
         [JsonProperty(PropertyName = "title")]
         public readonly string Title;
