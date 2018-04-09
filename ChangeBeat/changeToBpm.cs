@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ChangeBeat
 {
-    class Program
+    class changeToBpm
     {
-        static void Main(string[] args)
+        public void changeToBpm()
         {
+
         }
     }
 }
